@@ -1,7 +1,7 @@
 public abstract class Sensor
 {
     public int Id { get; set; }
-    public string Type { get; set; }  // Можна з enum'ом
+    public string Type { get; set; }
     public bool Status { get; set; }
     public int BatteryLevel { get; set; }
 
