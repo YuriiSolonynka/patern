@@ -9,6 +9,6 @@ public class Hub
     public User User { get; set; }
     public int SecurityServiceId{ get; set; }
     public SecurityService SecurityService { get; set; }
-    public ICollection<Sensor> ConnectedSensors { get; set; } = new List<Sensor>();
+    public ICollection<Sensor> Sensors { get; set; } = new List<Sensor>();
     public ICollection<Notification> Notifications { get; set; } = new List<Notification>();
 }
