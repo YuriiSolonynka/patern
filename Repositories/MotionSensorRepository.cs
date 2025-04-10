@@ -38,7 +38,7 @@ namespace patern.Repositories
                 _context.MotionSensors.Remove(motionSensor);
         }
 
-        public void UpdateMotionSernsor(MotionSensor motionSensor)
+        public void UpdateMotionSensor(MotionSensor motionSensor)
         {
             _context.MotionSensors.Update(motionSensor);
         }

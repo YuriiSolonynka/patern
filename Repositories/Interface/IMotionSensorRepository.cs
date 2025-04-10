@@ -8,7 +8,7 @@ namespace patern.Repositories.Interface
         IEnumerable<MotionSensor> GetMotionSensors();
         MotionSensor GetMotionSensorById(int id);
         void InsertMotionSensor(MotionSensor motionSensor);
-        void UpdateMotionSernsor (MotionSensor motionSensor);
+        void UpdateMotionSensor (MotionSensor motionSensor);
         void DeleteMotionSensor(int id);
         void Save();
     }
