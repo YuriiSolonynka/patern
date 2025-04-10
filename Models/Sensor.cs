@@ -1,3 +1,4 @@
+namespace patern.Models;
 public abstract class Sensor
 {
     public int Id { get; set; }

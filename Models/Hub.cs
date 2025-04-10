@@ -1,5 +1,4 @@
-using Microsoft.Net.Http.Headers;
-
+namespace patern.Models;
 public class Hub
 {
     public int Id { get; set; }

@@ -1,3 +1,4 @@
+namespace patern.Models;
 public class Notification
 {
     public int Id { get; set; }

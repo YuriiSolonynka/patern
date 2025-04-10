@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using patern;
+using patern.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,6 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

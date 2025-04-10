@@ -1,3 +1,4 @@
+namespace patern.Models;
 public class SmokeSensor : Sensor
 {
     public int SmokeLevel { get; set; }

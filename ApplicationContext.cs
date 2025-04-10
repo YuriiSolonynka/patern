@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-
-namespace patern
+namespace patern.Models
 {
     public class ApplicationContext : DbContext
     
@@ -13,6 +12,7 @@ namespace patern
         public DbSet<MotionSensor> MotionSensors { get; set; }
         public DbSet<SmokeSensor> SmokeSensors { get; set; }
         public DbSet<SecurityService> SecurityServices { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
 

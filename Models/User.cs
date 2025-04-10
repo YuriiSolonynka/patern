@@ -1,4 +1,5 @@
-using Microsoft.EntityFrameworkCore;
+namespace patern.Models;
+
 
 public class User
 {

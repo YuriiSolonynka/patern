@@ -1,3 +1,4 @@
+namespace patern.Models;
 public class MotionSensor : Sensor
 {
     public int SensitivityLevel { get; set; }

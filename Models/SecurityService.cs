@@ -1,3 +1,4 @@
+namespace patern.Models;
 public class SecurityService
 {
     public int Id { get; set; }
