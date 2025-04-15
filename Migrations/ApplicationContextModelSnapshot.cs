@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using patern;
+using patern.Models;
 
 #nullable disable
 
@@ -22,7 +22,7 @@ namespace patern.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Hub", b =>
+            modelBuilder.Entity("patern.Models.Hub", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace patern.Migrations
                     b.ToTable("Hubs");
                 });
 
-            modelBuilder.Entity("Notification", b =>
+            modelBuilder.Entity("patern.Models.Notification", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,10 +84,10 @@ namespace patern.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notification");
+                    b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("SecurityService", b =>
+            modelBuilder.Entity("patern.Models.SecurityService", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +108,7 @@ namespace patern.Migrations
                     b.ToTable("SecurityServices");
                 });
 
-            modelBuilder.Entity("Sensor", b =>
+            modelBuilder.Entity("patern.Models.Sensor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -130,10 +130,6 @@ namespace patern.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("HubId");
@@ -145,7 +141,7 @@ namespace patern.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("User", b =>
+            modelBuilder.Entity("patern.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -166,9 +162,9 @@ namespace patern.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("MotionSensor", b =>
+            modelBuilder.Entity("patern.Models.MotionSensor", b =>
                 {
-                    b.HasBaseType("Sensor");
+                    b.HasBaseType("patern.Models.Sensor");
 
                     b.Property<float>("DetectionRange")
                         .HasColumnType("real");
@@ -179,9 +175,9 @@ namespace patern.Migrations
                     b.HasDiscriminator().HasValue("Motion");
                 });
 
-            modelBuilder.Entity("SmokeSensor", b =>
+            modelBuilder.Entity("patern.Models.SmokeSensor", b =>
                 {
-                    b.HasBaseType("Sensor");
+                    b.HasBaseType("patern.Models.Sensor");
 
                     b.Property<bool>("AlarmTriggered")
                         .HasColumnType("bit");
@@ -192,15 +188,15 @@ namespace patern.Migrations
                     b.HasDiscriminator().HasValue("Smoke");
                 });
 
-            modelBuilder.Entity("Hub", b =>
+            modelBuilder.Entity("patern.Models.Hub", b =>
                 {
-                    b.HasOne("SecurityService", "SecurityService")
+                    b.HasOne("patern.Models.SecurityService", "SecurityService")
                         .WithMany("Hubs")
                         .HasForeignKey("SecurityServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("User", "User")
+                    b.HasOne("patern.Models.User", "User")
                         .WithMany("Hubs")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -211,21 +207,21 @@ namespace patern.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Notification", b =>
+            modelBuilder.Entity("patern.Models.Notification", b =>
                 {
-                    b.HasOne("Hub", "Hub")
+                    b.HasOne("patern.Models.Hub", "Hub")
                         .WithMany("Notifications")
                         .HasForeignKey("HubId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SecurityService", "SecurityService")
+                    b.HasOne("patern.Models.SecurityService", "SecurityService")
                         .WithMany("Notifications")
                         .HasForeignKey("SecurityServiceId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("User", "User")
+                    b.HasOne("patern.Models.User", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -238,9 +234,9 @@ namespace patern.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Sensor", b =>
+            modelBuilder.Entity("patern.Models.Sensor", b =>
                 {
-                    b.HasOne("Hub", "Hub")
+                    b.HasOne("patern.Models.Hub", "Hub")
                         .WithMany("Sensors")
                         .HasForeignKey("HubId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -249,21 +245,21 @@ namespace patern.Migrations
                     b.Navigation("Hub");
                 });
 
-            modelBuilder.Entity("Hub", b =>
+            modelBuilder.Entity("patern.Models.Hub", b =>
                 {
                     b.Navigation("Notifications");
 
                     b.Navigation("Sensors");
                 });
 
-            modelBuilder.Entity("SecurityService", b =>
+            modelBuilder.Entity("patern.Models.SecurityService", b =>
                 {
                     b.Navigation("Hubs");
 
                     b.Navigation("Notifications");
                 });
 
-            modelBuilder.Entity("User", b =>
+            modelBuilder.Entity("patern.Models.User", b =>
                 {
                     b.Navigation("Hubs");
 

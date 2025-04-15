@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using patern.Repositories.Interface;
 using patern.Models;
+#pragma warning disable CS8603
+
 
 namespace patern.Repositories
 {
@@ -16,14 +18,33 @@ namespace patern.Repositories
             _context = context;
         }
 
-        public IEnumerable<Notification> GetNotifications()
+        public IEnumerable<object> GetNotifications()
         {
-            return _context.Notifications.ToList();
+            return _context.Notifications
+            .Select(n => new {
+                n.Id,
+                n.Message,
+                n.TimeStamp,
+                n.UserId,
+                n.SecurityServiceId,
+                n.HubId
+            })
+            .ToList();
         }
 
-        public Notification GetNotificationById(int id)
+        public object GetNotificationById(int id)
         {
-            return _context.Notifications.Find(id);
+            return _context.Notifications
+            .Where(n => n.Id == id)
+            .Select(n => new {
+                n.Id,
+                n.Message,
+                n.TimeStamp,
+                User = n.UserId,
+                SecurityService = n.SecurityServiceId,
+                Hub = n.HubId
+            })
+            .FirstOrDefault();
         }
 
         public void InsertNotification(Notification notification)

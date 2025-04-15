@@ -2,7 +2,7 @@ namespace patern.Models;
 public abstract class Sensor
 {
     public int Id { get; set; }
-    public string Type { get; set; }
+    public string SensorType { get; set; }
     public bool Status { get; set; }
     public int BatteryLevel { get; set; }
 

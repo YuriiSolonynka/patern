@@ -17,12 +17,12 @@ namespace patern.Services
             _userRepository = userRepository;
         }
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<object> GetUsers()
         {
             return _userRepository.GetUsers();
         }
 
-        public User GetUserById(int id)
+        public object GetUserById(int id)
         {
             return _userRepository.GetUserById(id);
         }

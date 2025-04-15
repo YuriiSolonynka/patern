@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using patern.Repositories.Interface;
 using patern.Models;
+#pragma warning disable CS8603
 
 namespace patern.Repositories
 {
@@ -11,19 +12,33 @@ namespace patern.Repositories
     {
         private readonly ApplicationContext _context;
 
-        public SmokeSensorRepository(ApplicationContext context)
+        public IEnumerable<object> GetSmokeSensors()
         {
-            _context = context;
+            return _context.Sensors
+                .OfType<SmokeSensor>()
+                .Select(s => new
+                {
+                    s.Id,
+                    s.HubId,
+                    s.SmokeLevel,
+                    SensorType = "Smoke"
+                })
+                .ToList();
         }
 
-        public IEnumerable<SmokeSensor> GetSmokeSensors()
+        public object GetSmokeSensorById(int id)
         {
-            return _context.SmokeSensors.ToList();
-        }
-
-        public SmokeSensor GetSmokeSensorById(int id)
-        {
-            return _context.SmokeSensors.Find(id);
+            return _context.Sensors
+                .OfType<SmokeSensor>()
+                .Where(s => s.Id == id)
+                .Select(s => new
+                {
+                    s.Id,
+                    s.HubId,
+                    s.SmokeLevel,
+                    SensorType = "Smoke"
+                })
+                .FirstOrDefault();
         }
 
         public void InsertSmokeSensor(SmokeSensor smokeSensor)

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using patern.Repositories.Interface;
 using patern.Models;
+#pragma warning disable CS8603
+
 
 namespace patern.Repositories
 {
@@ -16,14 +18,31 @@ namespace patern.Repositories
             _context = context;
         }
 
-        public IEnumerable<SecurityService> GetSecurityServices()
+        public IEnumerable<object> GetSecurityServices()
         {
-            return _context.SecurityServices.ToList();
+            return _context.SecurityServices
+            .Select(s => new{
+                s.Id,
+                s.ServiceName,
+                s.ContactNumber,
+                Notifications = s.Notifications.Select(s => s.Id).ToList(),
+                Hubs = s.Hubs.Select(s => s.Id).ToList()
+            })
+            .ToList();
         }
 
-        public SecurityService GetSecurityServiceById(int id)
+        public object GetSecurityServiceById(int id)
         {
-            return _context.SecurityServices.Find(id);
+            return _context.SecurityServices
+            .Where(s => s.Id == id)
+            .Select(s => new{
+                s.Id,
+                s.ServiceName,
+                s.ContactNumber,
+                Notifications = s.Notifications.Select(s => s.Id).ToList(),
+                Hubs = s.Hubs.Select(s => s.Id).ToList()
+            })
+            .FirstOrDefault();
         }
 
         public void InsertSecurityService(SecurityService securityService)

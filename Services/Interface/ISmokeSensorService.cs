@@ -8,8 +8,8 @@ namespace patern.Services.Interface
 {
     public interface ISmokeSensorService
     {
-        IEnumerable<SmokeSensor> GetSmokeSensors();
-        SmokeSensor GetSmokeSensorById(int id);
+        IEnumerable<object> GetSmokeSensors();
+        object GetSmokeSensorById(int id);
         void CreateSmokeSensor(SmokeSensor smokeSensor);
         void UpdateSmokeSensor(SmokeSensor smokeSensor);
         void DeleteSmokeSensor(int id);

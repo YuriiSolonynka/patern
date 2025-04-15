@@ -17,12 +17,12 @@ namespace patern.Services
             _motionSensorRepository = motionSensorRepository;
         }
 
-        public IEnumerable<MotionSensor> GetMotionSensors()
+        public IEnumerable<object> GetMotionSensors()
         {
             return _motionSensorRepository.GetMotionSensors();
         }
 
-        public MotionSensor GetMotionSensorById(int id)
+        public object GetMotionSensorById(int id)
         {
             return _motionSensorRepository.GetMotionSensorById(id);
         }

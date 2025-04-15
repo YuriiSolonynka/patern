@@ -5,8 +5,8 @@ namespace patern.Repositories.Interface
 {
     public interface ISecurityServiceRepository : IDisposable
     {
-        IEnumerable<SecurityService> GetSecurityServices();
-        SecurityService GetSecurityServiceById(int id);
+        IEnumerable<object> GetSecurityServices();
+        object GetSecurityServiceById(int id);
         void InsertSecurityService(SecurityService securityService);
         void UpdateSecurityService(SecurityService securityService);
         void DeleteSecurityService(int id);

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using patern.Models;
 using patern.Repositories.Interface;
+#pragma warning disable CS8603
+
 
 namespace patern.Repositories
 {
@@ -15,14 +17,31 @@ namespace patern.Repositories
             _context = context;
         }
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<object> GetUsers()
         {
-            return _context.Users.ToList();
+            return _context.Users
+            .Select(u => new{
+                u.Id,
+                u.Name,
+                u.PhoneNumber,
+                Notifications = u.Notifications.Select(s => s.Id).ToList(),
+                Hubs = u.Hubs.Select(u => u.Id).ToList()
+            })
+            .ToList();
         }
 
-        public User GetUserById(int id)
+        public object GetUserById(int id)
         {
-            return _context.Users.Find(id);
+            return _context.Users
+            .Where(u => u.Id == id)
+            .Select(u => new{
+                u.Id,
+                u.Name,
+                u.PhoneNumber,
+                Notifications = u.Notifications.Select(s => s.Id).ToList(),
+                Hubs = u.Hubs.Select(u => u.Id).ToList()
+            })
+            .FirstOrDefault();
         }
 
         public void InsertUser(User user)

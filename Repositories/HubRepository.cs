@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using patern.Models;
 using patern.Repositories.Interface;
 namespace patern.Repositories
+#pragma warning disable CS8603
+
 {
     public class HubRepository : IHubRepository, IDisposable
     {
@@ -13,13 +15,34 @@ namespace patern.Repositories
         {
             _context = context;
         }
-        public IEnumerable<Hub> GetHubs()
+        public IEnumerable<object> GetHubs()
         {
-            return _context.Hubs.ToList();
+            return _context.Hubs
+                .Select(h => new
+                {
+                    h.Id,
+                    h.Location,
+                    h.UserId,
+                    h.SecurityServiceId,
+                    Sensors = h.Sensors.Select(s => s.Id).ToList(),
+                    Notifications = h.Notifications.Select(n => n.Id).ToList()
+                })
+                .ToList();
         }
-        public Hub GetHubById(int id)
+        public object GetHubById(int id)
         {
-            return _context.Hubs.Find(id);
+            return _context.Hubs
+                .Where(h => h.Id == id)
+                .Select(h => new
+                {
+                    h.Id,
+                    h.Location,
+                    User = h.UserId,
+                    SecurityService = h.SecurityServiceId,
+                    Sensors = h.Sensors.Select(s => s.Id).ToList(),
+                    Notifications = h.Notifications.Select(n => n.Id).ToList()
+                })
+                .FirstOrDefault();
         }
         public void InsertHub(Hub hub)
         {

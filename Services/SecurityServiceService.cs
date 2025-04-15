@@ -17,12 +17,12 @@ namespace patern.Services
             _securityServiceRepository = securityServiceRepository;
         }
 
-        public IEnumerable<SecurityService> GetSecurityServices()
+        public IEnumerable<object> GetSecurityServices()
         {
             return _securityServiceRepository.GetSecurityServices();
         }
 
-        public SecurityService GetSecurityServiceById(int id)
+        public object GetSecurityServiceById(int id)
         {
             return _securityServiceRepository.GetSecurityServiceById(id);
         }

@@ -17,12 +17,12 @@ namespace patern.Services
             _notificationRepository = notificationRepository;
         }
 
-        public IEnumerable<Notification> GetNotifications()
+        public IEnumerable<object> GetNotifications()
         {
             return _notificationRepository.GetNotifications();
         }
 
-        public Notification GetNotificationById(int id)
+        public object GetNotificationById(int id)
         {
             return _notificationRepository.GetNotificationById(id);
         }

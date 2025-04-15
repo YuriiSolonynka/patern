@@ -18,12 +18,12 @@ namespace patern.Services
             _hubRepository = hubRepository;
         }
 
-        public IEnumerable<Hub> GetHubs()
+        public IEnumerable<object> GetHubs()
         {
             return _hubRepository.GetHubs();
         }
 
-        public Hub GetHubById(int id)
+        public object GetHubById(int id)
         {
             return _hubRepository.GetHubById(id);
         }

@@ -8,8 +8,8 @@ namespace patern.Services.Interface
 {
     public interface IUserService
     {
-        IEnumerable<User> GetUsers();
-        User GetUserById(int id);
+        IEnumerable<object> GetUsers();
+        object GetUserById(int id);
         void CreateUser(User user);
         void UpdateUser(User user);
         void DeleteUser(int id);

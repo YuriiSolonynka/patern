@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using patern.Repositories.Interface;
 using patern.Models;
+#pragma warning disable CS8603
+
 
 namespace patern.Repositories
 {
@@ -16,15 +18,35 @@ namespace patern.Repositories
             _context = context;
         }
 
-        public IEnumerable<MotionSensor> GetMotionSensors()
+        public IEnumerable<object> GetMotionSensors()
         {
-            return _context.MotionSensors.ToList();
+            return _context.Sensors
+                .OfType<MotionSensor>()
+                .Select(m => new
+                {
+                    m.Id,
+                    m.HubId,
+                    m.SensitivityLevel,
+                    SensorType = "Motion"
+                })
+                .ToList();
         }
 
-        public MotionSensor GetMotionSensorById(int id)
+        public object GetMotionSensorById(int id)
         {
-            return _context.MotionSensors.Find(id);
+            return _context.Sensors
+                .OfType<MotionSensor>()
+                .Where(m => m.Id == id)
+                .Select(m => new
+                {
+                    m.Id,
+                    m.HubId,
+                    m.SensitivityLevel,
+                    SensorType = "Motion"
+                })
+                .FirstOrDefault();
         }
+
 
         public void InsertMotionSensor(MotionSensor motionSensor)
         {

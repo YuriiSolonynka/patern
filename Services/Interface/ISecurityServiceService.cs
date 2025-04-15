@@ -8,8 +8,8 @@ namespace patern.Services.Interface
 {
     public interface ISecurityServiceService
     {
-        IEnumerable<SecurityService> GetSecurityServices();
-        SecurityService GetSecurityServiceById(int id);
+        IEnumerable<object> GetSecurityServices();
+        object GetSecurityServiceById(int id);
         void CreateSecurityService(SecurityService securityService);
         void UpdateSecurityService(SecurityService securityService);
         void DeleteSecurityService(int id);

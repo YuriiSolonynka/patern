@@ -8,8 +8,8 @@ namespace patern.Services.Interface
 {
     public interface IMotionSensorService
     {
-        IEnumerable<MotionSensor> GetMotionSensors();
-        MotionSensor GetMotionSensorById(int id);
+        IEnumerable<object> GetMotionSensors();
+        object GetMotionSensorById(int id);
         void CreateMotionSensor(MotionSensor motionSensor);
         void UpdateMotionSensor(MotionSensor motionSensor);
         void DeleteMotionSensor(int id);

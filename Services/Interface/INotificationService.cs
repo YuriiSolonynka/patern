@@ -8,8 +8,8 @@ namespace patern.Services.Interface
 {
     public interface INotificationService
     {
-        IEnumerable<Notification> GetNotifications();
-        Notification GetNotificationById(int id);
+        IEnumerable<object> GetNotifications();
+        object GetNotificationById(int id);
         void CreateNotification(Notification notification);
         void UpdateNotification(Notification notification);
         void DeleteNotification(int id);

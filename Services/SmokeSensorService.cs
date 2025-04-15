@@ -17,12 +17,12 @@ namespace patern.Services
             _smokeSensorRepository = smokeSensorRepository;
         }
 
-        public IEnumerable<SmokeSensor> GetSmokeSensors()
+        public IEnumerable<object> GetSmokeSensors()
         {
             return _smokeSensorRepository.GetSmokeSensors();
         }
 
-        public SmokeSensor GetSmokeSensorById(int id)
+        public object GetSmokeSensorById(int id)
         {
             return _smokeSensorRepository.GetSmokeSensorById(id);
         }

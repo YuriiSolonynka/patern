@@ -5,8 +5,8 @@ namespace patern.Repositories.Interface
 {
     public interface INotificationRepository : IDisposable
     {
-        IEnumerable<Notification> GetNotifications();
-        Notification GetNotificationById(int id);
+        IEnumerable<object> GetNotifications();
+        object GetNotificationById(int id);
         void InsertNotification(Notification notification);
         void UpdateNotification(Notification notification);
         void DeleteNotification(int id);
