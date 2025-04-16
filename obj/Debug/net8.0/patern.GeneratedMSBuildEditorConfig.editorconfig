@@ -25,3 +25,31 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = D:\Patern\patern
 build_property._RazorSourceGeneratorDebug = 
+
+[D:/Patern/patern/Views/Hub/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHViXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Patern/patern/Views/Hub/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHViXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Patern/patern/Views/Hub/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHViXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Patern/patern/Views/Hub/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHViXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Patern/patern/Views/Hub/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHViXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Patern/patern/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Patern/patern/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

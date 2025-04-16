@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using patern.Models;
 using patern.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
 namespace patern.Repositories
 #pragma warning disable CS8603
 
@@ -15,38 +16,24 @@ namespace patern.Repositories
         {
             _context = context;
         }
-        public IEnumerable<object> GetHubs()
+        public IEnumerable<Hub> GetHubs()
         {
             return _context.Hubs
-                .Select(h => new
-                {
-                    h.Id,
-                    h.Location,
-                    h.UserId,
-                    h.SecurityServiceId,
-                    Sensors = h.Sensors.Select(s => s.Id).ToList(),
-                    Notifications = h.Notifications.Select(n => n.Id).ToList()
-                })
-                .ToList();
+            .Include(h => h.Sensors)
+            .Include(h => h.Notifications)
+            .ToList();
         }
-        public object GetHubById(int id)
+        public Hub GetHubById(int id)
         {
             return _context.Hubs
-                .Where(h => h.Id == id)
-                .Select(h => new
-                {
-                    h.Id,
-                    h.Location,
-                    User = h.UserId,
-                    SecurityService = h.SecurityServiceId,
-                    Sensors = h.Sensors.Select(s => s.Id).ToList(),
-                    Notifications = h.Notifications.Select(n => n.Id).ToList()
-                })
-                .FirstOrDefault();
+                .Include(h => h.Sensors)
+                .Include(h => h.Notifications)
+                .FirstOrDefault(h => h.Id == id);
         }
         public void InsertHub(Hub hub)
         {
             _context.Hubs.Add(hub);
+            Console.Write("repo");
         }
         public void DeleteHub(int id)
         {

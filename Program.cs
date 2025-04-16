@@ -31,8 +31,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<ICsvImportService, CsvImportService>();
 
-builder.Services.AddControllers();
-
+builder.Services.AddControllersWithViews();
 
 
 
@@ -48,6 +47,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.MapControllers();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Hub}/{action=Index}/{id?}");
 
 app.Run();

@@ -4,59 +4,89 @@ using patern.Services.Interface;
 
 namespace patern.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class HubController : ControllerBase
+    public class HubController : Controller
     {
+
         private readonly IHubService _hubService;
+        private readonly IUserService _userService;
+        private readonly ISecurityServiceService _securityServiceService;
 
         public HubController(IHubService hubService)
         {
             _hubService = hubService;
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult Index()
         {
             var hubs = _hubService.GetHubs();
-            return Ok(hubs);
+            return View(hubs);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult Details(int id)
         {
             var hub = _hubService.GetHubById(id);
             if (hub == null) return NotFound();
-            return Ok(hub);
+            return View(hub);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Hub hub)
         {
-            _hubService.CreateHub(hub);
-            _hubService.Save();
-            return CreatedAtAction(nameof(GetById), new { id = hub.Id }, hub);
+            ModelState.Remove("User");
+            ModelState.Remove("SecurityService");
+            if (ModelState.IsValid)
+            {
+                _hubService.CreateHub(hub);
+                _hubService.Save();
+                Console.Write("controller\n");
+                return RedirectToAction(nameof(Index));
+            }
+            return View(hub);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, Hub hub)
+        public IActionResult Edit(int id)
         {
-            if (id != hub.Id) return BadRequest();
-
-            _hubService.UpdateHub(hub);
-            _hubService.Save();
-            return NoContent();
+            var hub = _hubService.GetHubById(id);
+            if (hub == null) return NotFound();
+            return View(hub);
         }
 
-        [HttpDelete("{id}")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Hub hub)
+        {
+            if (id != hub.Id) return NotFound();
+            ModelState.Remove("User");
+            ModelState.Remove("SecurityService");
+            if (ModelState.IsValid)
+            {
+                _hubService.UpdateHub(hub);
+                _hubService.Save();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(hub);
+        }
+
         public IActionResult Delete(int id)
         {
             var hub = _hubService.GetHubById(id);
             if (hub == null) return NotFound();
+            return View(hub);
+        }
 
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
             _hubService.DeleteHub(id);
             _hubService.Save();
-            return NoContent();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

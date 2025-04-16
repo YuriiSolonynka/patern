@@ -18,12 +18,12 @@ namespace patern.Services
             _hubRepository = hubRepository;
         }
 
-        public IEnumerable<object> GetHubs()
+        public IEnumerable<Hub> GetHubs()
         {
             return _hubRepository.GetHubs();
         }
 
-        public object GetHubById(int id)
+        public Hub GetHubById(int id)
         {
             return _hubRepository.GetHubById(id);
         }
@@ -32,6 +32,7 @@ namespace patern.Services
         {
             _hubRepository.InsertHub(hub);
             _hubRepository.Save();
+            Console.Write("service\n");
         }
 
         public void UpdateHub(Hub hub)
