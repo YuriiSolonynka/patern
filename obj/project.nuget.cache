@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "R6rZd9IeqdI=",
+  "success": true,
+  "projectFilePath": "D:\\Patern\\patern\\patern.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Yurii\\.nuget\\packages\\confluent.kafka\\2.10.0\\confluent.kafka.2.10.0.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\librdkafka.redist\\2.10.0\\librdkafka.redist.2.10.0.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.4\\microsoft.extensions.configuration.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.4\\microsoft.extensions.configuration.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\9.0.4\\microsoft.extensions.configuration.fileextensions.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\microsoft.extensions.configuration.json\\9.0.4\\microsoft.extensions.configuration.json.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\9.0.4\\microsoft.extensions.fileproviders.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\9.0.4\\microsoft.extensions.fileproviders.physical.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\9.0.4\\microsoft.extensions.filesystemglobbing.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.4\\microsoft.extensions.primitives.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\stackexchange.redis\\2.8.31\\stackexchange.redis.2.8.31.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\system.io.pipelines\\9.0.4\\system.io.pipelines.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\system.text.encodings.web\\9.0.4\\system.text.encodings.web.9.0.4.nupkg.sha512",
+    "C:\\Users\\Yurii\\.nuget\\packages\\system.text.json\\9.0.4\\system.text.json.9.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
