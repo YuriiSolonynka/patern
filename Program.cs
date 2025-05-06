@@ -4,6 +4,9 @@ using Microsoft.Extensions.Configuration;
 using patern.Models;
 using patern.OutputStrategies;
 using System;
+using patern;
+
+
 
 var config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
@@ -25,6 +28,7 @@ IOutputStrategy strategy = outputType switch
 
 var context = new OutputContext(strategy);
 
+
 string path = "Crimes_data.csv";
 using var reader = new StreamReader(path);
 using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
@@ -34,3 +38,5 @@ foreach (var record in records.Take(100))
 {
     context.Write(record);
 }
+KafkaConsumerRunner.Run();
+
